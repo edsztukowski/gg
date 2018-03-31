@@ -2010,6 +2010,7 @@ $shareCountBg: $colorBody;
     top: 25%;
     left: 0;
     right: 0;
+    padding: 0;
 }
 
 .hero__slide.text-right .hero__text-content {
@@ -2017,7 +2018,26 @@ $shareCountBg: $colorBody;
     top: 50%;
     right: 0;
     left: 55%;
+    padding: 0;
 }
+
+.hero__slide.text-bottom .hero__text-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10%;
+    padding: 0;
+}
+
+.hero__slide.text-left .hero__text-content {
+    position: absolute;
+    top: 50%;
+    right: 55%;
+    left: 0;
+    padding: 0;
+}
+
+
 
 /*================ Extra specificity to override Timber defaults ================*/
 .hero__slide {
@@ -3429,4 +3449,30 @@ button.mfp-arrow {
    background-size: contain;
    background-position: center;
  }
+ 
+ /*================ Hero Text Positioning + mobile font size  -Ed =========================*/
+
+.hero__slide .hero__title {
+    font-size: 2em;
+}
+
+.hero__slide.text-top .hero__text-content {
+    position: initial;
+    
+}
+
+.hero__slide.text-right .hero__text-content {
+    position: initial;
+}
+
+.hero__slide.text-bottom .hero__text-content {
+    position: initial;
+
+}
+
+.hero__slide.text-left .hero__text-content {
+    position: initial;
+
+}
+ 
 }
