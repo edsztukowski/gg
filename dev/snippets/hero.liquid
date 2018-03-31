@@ -26,22 +26,18 @@
   </div>
 {% endif %}
 
-  <div 
-       style="max-height:513px;max-width:1200px;margin:auto;"
-       
-       
-       
-       class="hero{% if hero_full_height %} hero--full-height{% endif %}{% if hero_first_on_page %} hero--first{% endif %}" id="Hero"{% if hero_full_height %} data-fullscreen="true"{% endif %}{% if hero_parallax %}data-parallax="true"{% endif %}>
+  <div class="hero{% if hero_full_height %} hero--full-height{% endif %}{% if hero_first_on_page %} hero--first{% endif %}" id="Hero"{% if hero_full_height %} data-fullscreen="true"{% endif %}{% if hero_parallax %}data-parallax="true"{% endif %}>
     {% for i in (1..6) %}
       {% capture slide %}hero_slide_{{ i }}_enable{% endcapture %}
       {% capture slide_img %}hero_slide_{{ i }}.jpg{% endcapture %}
       {% capture slide_text_color %}hero_slide_{{ i }}_text_color{% endcapture %}
+      {% capture slide_text_positioning %}hero_slide_{{ i }}_text_positioning{% endcapture %}
       {% capture slide_heading %}hero_slide_{{ i }}_heading{% endcapture %}
       {% capture slide_subheading %}hero_slide_{{ i }}_subheading{% endcapture %}
       {% capture slide_cta %}hero_slide_{{ i }}_cta{% endcapture %}
       {% capture slide_link %}hero_slide_{{ i }}_link{% endcapture %}
       {% if settings[slide] %}
-        <div class="hero__slide {{ settings[slide_text_color] }}" data-color="{{ settings[slide_text_color] }}">
+        <div class="hero__slide {{ settings[slide_text_color] }} {{ settings[slide_text_positioning] }}" data-color="{{ settings[slide_text_color] }}">
           {% if hero_full_height %}
             {% comment %}
               Full-screen styles use CSS background images
