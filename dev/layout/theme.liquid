@@ -33,12 +33,15 @@
 
   <!-- CSS ================================================== -->
   {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
-  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  
   {% include 'google-fonts' %}
 
   <!-- Header hook for plugins ================================================== -->
   {% include 'buddha-megamenu-before' %}
   {% include 'buddha-megamenu' %}
+  
+  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  
   {{ content_for_header }}
 
   {% include 'bold-common' %}
@@ -66,6 +69,7 @@
   
   <meta name="google-site-verification" content="5yuqP0TyZHNcZGRHJ0gtoBC7TzHnObemvVL5H_MtVbM" />
 
+{% section 'filter-menu-settings' %}
 </head>
 
 {% comment %}
@@ -190,7 +194,7 @@
 
     <div class="header-wrapper{% unless hero_full_height %} header-wrapper--over-hero{% endunless %}">
       <header class="site-header" role="banner">
-        <div class="wrapper">
+        <div class="wrapper-big">
           <div class="grid--full grid--table">
             <div class="grid__item large--hide one-quarter">
               <div class="site-nav--mobile">

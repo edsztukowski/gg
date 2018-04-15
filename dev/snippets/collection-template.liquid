@@ -78,53 +78,62 @@
 
 {% if settings.collection_products_grid == 'collage' %}
   <div class="grid grid-collage">
+<div class="grid__item medium--one-whole large--one-quarter">
+    {% include 'filter-menu' %}
+</div>  
+<div class="grid__item medium--one-whole large--three-quarters"> 
+{% comment %}
+  Loop through our products in the current collection.
+  See the snippet 'snippets/product-grid-collage.liquid'.
+
+  `is_reverse_row__product`, `three_row_index__product`, `collection_product_count`, and `divisible_by_three__product` are
+  all used by 'snippets/product-grid-collage.liquid'
+{% endcomment %}
+{% assign is_reverse_row__product = false %}
+{% assign three_row_index__product = 0 %}
+{% assign collection_product_count__product = collection.products_count %}
+{% assign divisible_by_three__product = collection_product_count__product | modulo:3 %}
+{% for product in collection.products %}
+  {% include 'product-grid-collage' %}
+{% else %}
+
+  {% if collection.handle == 'all' %}
+
     {% comment %}
-      Loop through our products in the current collection.
-      See the snippet 'snippets/product-grid-collage.liquid'.
-
-      `is_reverse_row__product`, `three_row_index__product`, `collection_product_count`, and `divisible_by_three__product` are
-      all used by 'snippets/product-grid-collage.liquid'
+      Add default products to help with onboarding for collections/all only
     {% endcomment %}
-    {% assign is_reverse_row__product = false %}
-    {% assign three_row_index__product = 0 %}
-    {% assign collection_product_count__product = collection.products.size %}
-    {% assign divisible_by_three__product = collection_product_count__product | modulo:3 %}
-    {% for product in collection.products %}
-    {% include 'bold-product' with product, hide_action: 'skip' %}
-      {% include 'product-grid-collage' %}
-    {% else %}
+    {% unless emptyState %}
+      {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
+      {% assign emptyState = true %}
+    {% endunless %}
 
-      {% if shop.products_count == 0 %}
+    {% include 'onboarding-empty-collection' %}
 
-        {% comment %}
-          Add default products to help with onboarding for collections/all only
-        {% endcomment %}
-        {% unless emptyState %}
-          {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
-          {% assign emptyState = true %}
-        {% endunless %}
+  {% else %}
 
-        {% include 'onboarding-empty-collection' %}
+    {% comment %}
+      If collection exists but is empty, display message
+    {% endcomment %}
+    <div class="grid__item text-center">
+      <p>{{ 'collections.general.no_matches' | t }}</p>
+    </div>
 
-      {% else %}
+  {% endif %}
 
-        {% comment %}
-          If collection exists but is empty, display message
-        {% endcomment %}
-        <div class="grid__item text-center">
-          <p>{{ 'collections.general.no_matches' | t }}</p>
-        </div>
+{% endfor %}
+</div>
+</div>
 
-      {% endif %}
-
-    {% endfor %}
 
   </div>
 {% elsif settings.collection_products_grid == 'grid' %}
   <div class="grid-uniform">
+    <div class="grid__item medium--one-whole large--one-quarter">
+        {% include 'filter-menu' %}
+    </div>  
+    <div class="grid__item medium--one-whole large--three-quarters"> 
     {% assign grid_item_width = 'medium--one-half large--one-third' %}
     {% for product in collection.products %}
-    {% include 'bold-product' with product, hide_action: 'skip' %}
       {% include 'product-grid-item' %}
     {% else %}
       {% if collection.handle == 'all' %}
@@ -149,6 +158,9 @@
 
       {% endif %}
     {% endfor %}
+    </div>
+  </div>
+
   </div>
 {% endif %}
 

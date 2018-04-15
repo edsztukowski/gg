@@ -757,7 +757,7 @@ hr {
 
 .hr--small {
   @extend hr;
-  margin: 20px auto;
+  margin: 15px auto;
 }
 
 .hr--medium {
@@ -930,7 +930,7 @@ th,
 /*================ Rich Text Editor Styles ================*/
 .rte {
   h1 {
-    @include accentFontStack;
+    @include headerFontStack;
     font-size: em(22px);
     text-align: center;
   }
@@ -1244,6 +1244,27 @@ input[type="image"] {
   padding-left: 10px;
 }
 
+/*================HOME PAGE STYLINGS -Ed================*/
+.home-grid.grid-uniform .large--one-third:nth-child(3n+1) {
+    clear: none!important;
+}
+
+.home-grid .large--one-third {
+    width: 25%
+}
+
+.home-image-right {
+ 	float: right;
+    max-width: 50%;
+    margin: 0 1em 3em;
+}
+
+/*=======HR Fixes -Ed=================*/
+hr.hr--small {
+    border-width: 4px 0 0 0;
+    margin: 10px auto;
+    border-top: solid #BFDFE1;
+}
 /*================ Modules | Theme product collage grid ================*/
 .grid__row-separator {
   clear: both;
@@ -2439,6 +2460,28 @@ $slick-opacity-not-active: 0.25;
   }
 }
 
+/*================== Header Styles -Ed =======================*/
+
+.site-header {
+    padding: 15px;
+    border-bottom: 5px solid #DAE5CE;
+}
+
+      /*=====fixed header -Ed ======*/
+      .header-wrapper.hero__header.is-light {
+          position: fixed;
+      }
+
+
+
+
+
+/*================== Site Wrapper Expand -Ed ==============*/
+.wrapper-big {
+    max-width: 100%;
+    padding: 0 1em 0;
+}
+
 
 /*================ Logo Image ================*/
 .site-header__logo .logo--has-inverted {
@@ -3444,11 +3487,18 @@ button.mfp-arrow {
           display:none !important; 
         }
 
+
+/**=== -Ed changed background size to cover and height to 100px **/
 @media screen and (max-width: 900px){
     .hero--full-height .hero__image{
-        background-size: contain;
+        background-size: cover;
         background-position: center;
     }
+  
+      div#Hero {
+        height: 100px!important;
+    }
+
  
  /*================ Hero Text Positioning  -Ed =========================*/
 
@@ -3476,4 +3526,27 @@ button.mfp-arrow {
     .hero__slide .hero__title {
         font-size: 2em;
     }
+}
+
+
+/*================== Navigation Styles -Ed =======================*/
+/***includes sticky header stuff*****************/
+
+ul.mm-submenu.simple {
+    border-bottom: 5px solid #DAE5CE;
+}
+
+.horizontal-mega-menu ul.mm-submenu.simple > li .mm-list-name {
+    border-bottom: 2px solid #DAE5CE
+}
+
+
+.header-wrapper.header-wrapper--over-hero {
+    position: fixed;
+    background: #fff;
+    z-index: 2000;
+}
+
+.template-collection main.main-content {
+    padding-top: 177px;
 }

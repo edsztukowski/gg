@@ -28,7 +28,7 @@
   {% assign sold_out = false %}
 {% endif %}
 
-<div class="grid__item grid-product {{ grid_item_width }}{% if sold_out %} is-sold-out{% endif %}">
+<div class="grid__item grid-product {{ grid_item_width }} medium--one-half{% if sold_out %} is-sold-out{% endif %}">
   <div class="grid-product__wrapper">
     <div class="grid-product__image-wrapper">
       <a class="grid-product__image-link" href="{{ product.url | within: collection }}">
